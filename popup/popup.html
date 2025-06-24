@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Quick Proxy</title>
+        <link rel="stylesheet" href="popup.css" />
+    </head>
+    <body>
+        <div class="container">
+            <header class="header">
+                <h1>Quick Proxy</h1>
+                <div class="version">v1.0.0</div>
+            </header>
+
+            <div class="main-toggle-container">
+                <div class="toggle-container">
+                    <label class="switch">
+                        <input type="checkbox" id="toggleCheckbox" />
+                        <span class="slider round"></span>
+                    </label>
+                    <strong id="toggleLabel">Выключено</strong>
+                </div>
+                <div class="proxy-info">
+                    <span id="proxyInfoAddress">0.0.0.0:0000</span>
+                </div>
+            </div>
+
+            <div id="statusMessage" class="status-message"></div>
+
+            <div class="tabs">
+                <button class="tab-button active" data-tab="settings">Настройки</button>
+            </div>
+
+            <div class="tab-content" id="settings-tab">
+                <div class="settings-container">
+                    <h2>Настройки прокси</h2>
+
+                    <form id="proxyForm">
+                        <div class="setting-item">
+                            <label>Тип:</label>
+                            <select id="proxyType">
+                                <option value="socks5">SOCKS5</option>
+                                <option value="socks4">SOCKS4</option>
+                                <option value="http">HTTP</option>
+                                <option value="https">HTTPS</option>
+                            </select>
+                        </div>
+
+                        <div class="setting-item">
+                            <label>Хост:</label>
+                            <input type="text" id="proxyHost" placeholder="127.0.0.1" autocomplete="off" />
+                        </div>
+
+                        <div class="setting-item">
+                            <label>Порт:</label>
+                            <input type="number" id="proxyPort" placeholder="1080" />
+                        </div>
+
+                        <div class="setting-actions">
+                            <button type="submit" class="button-primary">Сохранить</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <footer class="footer">
+                <span>Сделано с ❤ к конфиденциальности</span>
+            </footer>
+        </div>
+
+        <script src="popup.js"></script>
+    </body>
+</html>
