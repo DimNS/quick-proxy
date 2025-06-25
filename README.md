@@ -50,3 +50,7 @@
 1. На странице `chrome://extensions/` нажмите "Упаковать расширение"
 2. Выберите папку с расширением
 3. Будет создан `.crx`-файл, который можно распространять
+
+## Icon
+
+[Icon by Yudhi Restu](https://www.freepik.com/icon/server_12890348#fromView=search&page=1&position=16&uuid=235ebefb-fc47-4edf-a050-0f0202fb6ee2)
