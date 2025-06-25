@@ -6,17 +6,27 @@ let proxySettings = {
     port: '',
 };
 
-// Получение сохраненных настроек при запуске.
-chrome.storage.local.get(['proxyEnabled', 'proxySettings']).then((result) => {
-    if (result.proxyEnabled !== undefined) {
-        proxyEnabled = result.proxyEnabled;
-    }
-    if (result.proxySettings) {
-        proxySettings = result.proxySettings;
-    }
+function loadSettingsAndUpdateIcon() {
+    chrome.storage.local.get(['proxyEnabled', 'proxySettings']).then((result) => {
+        if (result.proxyEnabled !== undefined) {
+            proxyEnabled = result.proxyEnabled;
+        }
+        if (result.proxySettings) {
+            proxySettings = result.proxySettings;
+        }
 
-    updateIcon();
-});
+        updateIcon();
+    });
+}
+
+// Срабатывает при установке/обновлении расширения
+chrome.runtime.onInstalled.addListener(loadSettingsAndUpdateIcon);
+
+// Срабатывает при полном запуске браузера
+chrome.runtime.onStartup.addListener(loadSettingsAndUpdateIcon);
+
+// Срабатывает при каждом пробуждении background.js
+loadSettingsAndUpdateIcon();
 
 // Обработчик сообщений.
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
